@@ -38,7 +38,7 @@ func (c Cloudflare) PurgeFile(path string) error {
 	base := "https://api.cloudflare.com/client/v4/zones/%s/purge_cache"
 	for k := range c.Domains {
 		config := c.Domains[k]
-		url := strings.Trim(config.URL, "/") + "/" + strings.Trim(path, "/")
+		url := strings.Trim(config.URL, "/") + "/" + strings.Trim(path, "/") + "/"
 		files := map[string][]string{"files": []string{url}}
 		b, err := json.Marshal(files)
 		if err != nil {
